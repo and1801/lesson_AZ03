@@ -8,21 +8,20 @@ import csv
 
 # Если используем Google Chrome, то пишем driver = webdriver.Chrome()
 driver = webdriver.Firefox()
-driver = webdriver.Firefox()
 
 # URL страницы
-url = 'https://www.divan.ru/irkutsk/category/divany-i-kresla'
+url = 'https://tehnotezis.ru/catalog/raskhodnye_materialy/kartridzhi_dlya_printerov/'
 
 # Открытие страницы
 driver.get(url)
 
 # Ждем некоторое время, чтобы страница полностью загрузилась
-time.sleep(5)
+time.sleep(20)
 
-# Парсинг цен
-prices = driver.find_elements(By.XPATH, "//span[contains(@class, 'ui-LD-ZU') and contains(@class, 'ui-SVNym') and contains(@class, 'bSEDs')]/span[@data-testid='price']")
 
-#<span class="ui-LD-ZU ui-SVNym bSEDs" data-testid="price">55 990<span class="ui-i5wwi ui-VDyJR ui-VWOa-">руб.</span></span>
+prices = driver.find_elements(By.CLASS_NAME, 'price_value')
+
+
 
 # Открытие CSV файла для записи
 with open('pricesd.csv', mode='w', newline='', encoding='utf-8') as file:
